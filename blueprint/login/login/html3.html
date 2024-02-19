@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Root验证</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/static/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>root验证</h2>
+	<form action="/login/register_root" class="needs-validation" novalidate method='POST'>
+	  <div class="form-group">
+		<label for="uname">root用户名：</label>
+		<input type="text" class="form-control" id="uname" placeholder="请输入用户名" name="name" required>
+		<div class="valid-feedback">root用户名已输入</div>
+		<div class="invalid-feedback">请输入root用户名！</div>
+	  </div>
+	  <div class="form-group">		<label for="pwd">root密码：</label>
+		<input type="password" class="form-control" id="pwd" placeholder="请输入密码" name="pswd" required>
+		<div class="valid-feedback">root密码已输入</div>
+		<div class="invalid-feedback">请输入root密码！</div>
+		</label>
+	  </div>
+	  <button type="submit" class="btn btn-primary">提交</button>
+	</form>
+</div>
+
+<script>
+// 如果验证不通过禁止提交表单
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // 获取表单验证样式
+    var forms = document.getElementsByClassName('needs-validation');
+    // 循环并禁止提交
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+</body>
+</html>

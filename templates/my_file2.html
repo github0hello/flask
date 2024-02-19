@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>移动到...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/static/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+    #a{
+      font-size: 25px;
+      color: black;
+      a:link {color:#000000;}      /* 未访问链接*/
+      a:visited {color:#000000;}  /* 已访问链接 */
+      a:hover {color:#000000;}  /* 鼠标移动到链接上 */
+      a:active {color:blue;}  /* 鼠标点击时 */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-3">
+  <a id="a" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    移动
+  </a>
+   
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">工具箱</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a href="/upload" class="btn btn-primary" role="button">上传</a>
+      <a href="/add_dir" class="btn btn-primary" role="button">新增文件夹</a>
+              
+      {{ last|safe }}
+      /{{from_}}/{{name}}
+      <a href="/{{from_}}/{{name}}" class="btn btn-primary" role="button">确定</a>
+        
+      
+    </div>
+  </div>
+  
+
+
+  <div class="list-group">
+
+    {{ files|safe }}
+  </div>
+</div>
+
+
+</body>
+</html>

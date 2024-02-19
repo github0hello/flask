@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script src="/static/lib/jquery.min.js">
+</script>
+</head>
+<body>
+    <button onclick="mouse = 'right'">right</button>
+    <button onclick="mouse = 'left'">left</button>
+    <h1 id="position">ok</h1>
+    <img src="/static/image/grab.png" id="img"/>
+
+</body>
+<script type="text/javascript">
+    // 设置刷新时间间隔（以毫秒为单位）
+    var mouse = "right"
+    var refreshInterval = parseInt(70); // 每5秒刷新一次页面
+    Img = document.getElementById("img")
+    function refreshPage() {
+    //   window.location.reload(); // 刷新页面
+        //Img.src = "/static/image/grab.png?t=" + new Date().getTime()
+        // alert(Img.src)
+    }
+    // 在指定的时间间隔内重复调用refreshPage函数
+    setInterval(refreshPage, refreshInterval);
+    document.addEventListener('DOMContentLoaded', function() {  
+  var image = document.getElementById('img');  
+  
+  image.addEventListener('click', function(event) {  
+    var x = event.offsetX;  
+    var y = event.offsetY;  
+  
+    console.log('点击位置:', x, y);  
+    $.get("/onclick?x="+x+"&y="+y+"&mouse="+mouse,function(data,status){
+			console.log("click")
+		});
+    // 如果你想在页面上显示点击位置，可以使用以下代码：  
+    var position = document.getElementById('position');  
+    position.textContent = '点击位置: (' + x + ', ' + y + ')';  
+  });  
+});
+    
+
+
+
+  </script>
+</html>

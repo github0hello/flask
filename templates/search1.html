@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.3.1/css/bootstrap.min.css">
+ 
+<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+    </head>
+<body>
+<div class="search">
+<h1>搜索路由</h1>
+    <div class="input-group mb-3">
+  <input type="text" id="roadline" class="form-control" placeholder="搜索一下" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-primary" type="button" id="button-addon2" onclick="jump()">搜索</button>
+</div>
+  </div>
+
+
+</div>
+<style>
+.search {
+  padding: 220px ;
+
+
+}
+</style>
+</body>
+<script type="text/javascript">
+    $(function() {
+        var availableTags = {{ url|safe }};
+        $( "#roadline" ).autocomplete({
+            source:
+                    function(request, response) {
+                        var results = $.ui.autocomplete.filter(availableTags, request.term);
+                        response(results.slice(0, 10));//只显示自动提示的前十条数据
+                    },
+            messages: {
+                noResults: '',
+                results: function() {}
+            },
+        });
+ 
+    });
+    
+    function jump(){
+        	location.href = document.getElementById('roadline').value
+    	};
+</script>
+</html>

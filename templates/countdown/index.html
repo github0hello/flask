@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>倒计时</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+        
+        <link href="/static/lib/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/css/countdown/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/static/css/countdown/tooplate-kool-form-pack.css" rel="stylesheet">
+        
+        
+    </head>
+    
+    <body>
+
+
+        <main>
+            
+
+
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                
+                <div class="container">
+                    
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mx-auto">
+                            <small>欢迎来到倒计时<button style="float: right;color: #ffffff;" class="btn" id="full-screen-btn">全屏</button></small>
+                            <!-- please set the date time in the init.js file -->
+                            
+                          <h1 class="text-white mt-2 mb-4 pb-2">
+                                倒计时
+                            </h1>
+
+                             <ul class="countdown d-flex flex-wrap align-items-center">
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h2 class="countdown-title days">输</h2>
+                                    <span class="countdown-text">天</span>
+                               </li>
+
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h2 class="countdown-title hours">入</h2>
+                                    <span class="countdown-text">小时</span>
+                               </li>
+
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h2 class="countdown-title minutes">错</h2>
+                                    <span class="countdown-text">分钟</span>
+                               </li>
+
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h2 class="countdown-title seconds">误</h2>
+                                    <span class="countdown-text">秒</span>
+                               </li>     
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="/static/videos/video.mp4" type="video/mp4">
+
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/lib/bootstrap5/js/bootstrap.min.js"></script>
+        <script src="/static/js/countdown/countdown.js"></script>
+        <script>
+        //Hook up the tweet display
+
+$(document).ready(function() {
+                           
+    $(".countdown").countdown({
+               // date: "9 February 2024 00:00:00",
+                date: "{{ date }}",
+                format: "on"
+            },
+            
+            function() {
+                // callback function
+            });
+
+}); 
+
+
+        </script>
+<script>
+    const html = document.querySelector('html');
+    const fullScreenBtn = document.getElementById('full-screen-btn');
+    fullScreenBtn.onclick = () => {
+      html.requestFullscreen()
+        .then(() => {
+          console.log('进入全屏成功')
+        })
+        .catch(() => {
+          console.log('进入全屏失败')
+        })
+    }
+  </script>
+    </body>
+</html>
