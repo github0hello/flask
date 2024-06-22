@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+    {{key}}
+    <img src="/static/image/1.jpg" id="img"/><br>
+    <button onclick="window.location.href = '/exit_video_viewing'" style="background-color: white;border: none;">退出</button>
+</body>
+<script type="text/javascript">
+    // 设置刷新时间间隔（以毫秒为单位）
+    var refreshInterval = parseInt(70); // 每5秒刷新一次页面
+    Img = document.getElementById("img")
+    function refreshPage() {
+    //   window.location.reload(); // 刷新页面
+        Img.src = "/static/image/1.jpg?t=" + new Date().getTime()
+        // alert(Img.src)
+    }
+    // 在指定的时间间隔内重复调用refreshPage函数
+    setInterval(refreshPage, refreshInterval);
+    
+
+
+
+  </script>
+</html>

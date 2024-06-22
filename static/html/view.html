@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        iframe {
+            height: calc(100vh);
+            width: 87%;
+            float: right;
+        }
+        .tool{
+            float: left;
+            /* border:2px solid #dedede; */
+	        /* padding:10px 40px;  */
+	        background:#ffffff;
+	        width:10%;
+	        /* border-radius:25px; */
+            /* border-right-style:solid; */
+            box-shadow: 5px 2px 2px 1px rgb(205, 205, 205);
+        }
+    </style>
+</head>
+<body>
+    <div class="tool">
+        <ul>
+            <li>hello</li>
+        </ul>
+    </div>
+    
+    <iframe src="https://www.runoob.com" id="web">
+        <p>您的浏览器不支持  iframe 标签。</p>
+      </iframe>
+</body>
+<script>
+function on(){
+    document.getElementById("web").src = "https://www.bing.com"
+}
+</script>
+</html>

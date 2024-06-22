@@ -1,0 +1,66 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>上传文件界面</title>  
+  <!-- 新 Bootstrap5 核心 CSS 文件 --> 
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css"> 
+  <!-- popper.min.js 用于弹窗、提示、下拉菜单 --> 
+  <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script> 
+  <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script> 
+  <style>  
+    /* 自定义样式 */  
+    .upload-container {  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      height: 100vh;  
+    }  
+      
+    .upload-container .form-group {  
+      margin-bottom: 1rem;  
+    }  
+      
+    .upload-container label {  
+      font-weight: bold;  
+    }  
+      
+    .upload-container input[type="file"] {  
+      display: block;  
+      margin-bottom: 0.5rem;  
+    }  
+      
+    .upload-container button {  
+      padding: 0.5rem 1rem;  
+      font-size: 1rem;  
+      color: #fff;  
+      background-color: #007bff;  
+      border: none;  
+      border-radius: 0.25rem;  
+      cursor: pointer;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div class="upload-container">  
+    <div class="row">  
+      <div class="col">  
+        <h2>上传文件</h2>  
+      </div>  
+    </div>  
+    <div class="row">  
+      <div class="col-md-6">  
+        <form method="POST" enctype=multipart/form-data>
+          <div class="form-group">  
+            <label for="fileInput">选择文件</label>  
+            <input type="file" class="form-control-file" id="fileInput" name="file">  
+          </div>  
+          <button type="submit" class="btn btn-primary">上传</button>  
+        </form>  
+      </div>  
+    </div>  
+  </div>  
+</body>  
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bootstrap5 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet"
+    href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+    aria-controls="offcanvasScrolling"><span class="fa fa-bars"></span></button>
+
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="width: 200px;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">最近文件</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container mt-3">
+
+        <div class="d-grid gap-3">
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn">Button</button>
+            <button type="button" class="btn">Button</button>
+            <button type="button" class="btn">Button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Kool Form Pack | Login page</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link href="/static/css/countdown/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/css/countdown/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/static/css/countdown/tooplate-kool-form-pack.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="hero-section d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 col-12 mx-auto">
+                        <form class="custom-form login-form" role="form" method="post" action="/countdown">
+                            <h2 class="hero-title text-center mb-4 pb-2">自定义倒计时</h2>
+                            <div class="form-floating mb-4 p-0">
+                                <input type="number" name="years" min="2024" id="years" class="form-control" placeholder="年份"
+                                    required="">
+
+                                <label for="years">年</label>
+                            </div>
+
+                            <div class="form-floating mb-4 p-0">
+                                <input type="number" name="months" min="1" max="12" id="months" class="form-control" placeholder="月份"
+                                    required="">
+
+                                <label for="months">月</label>
+                            </div>
+
+                            <div class="form-floating mb-4 p-0">
+                                <input type="number" name="days" id="days" max="31" min="1" class="form-control" placeholder="天数"
+                                    required="">
+
+                                <label for="days">天</label>
+                            </div>
+
+                            <div class="form-floating p-0">
+                                <input type="number" name="hours" min="0" max="23" id="hours" class="form-control" placeholder="小时"
+                                    required="">
+
+                                <label for="hours">小时</label>
+                            </div>
+
+                            <div class="form-floating p-0">
+                                <input type="number" name="minutes" id="minutes" min="0" max="60" class="form-control" placeholder="分钟"
+                                    required="">
+
+                                <label for="minutes">分钟</label>
+                            </div>
+
+                            <div class="form-floating p-0">
+                                <input type="number" name="seconds" id="seconds" min="0" max="60" class="form-control" placeholder="秒"
+                                    required="">
+
+                                <label for="seconds">秒</label>
+                            </div>
+
+
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-lg-5 col-12">
+                                    <button type="submit" class="form-control">创建</button>
+                                </div>
+
+                            </div>
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrap">
+                <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                    <source src="/static/videos/video.mp4" type="video/mp4">
+
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/countdown/countdown.js"></script>
+    <script src="/static/js/countdown/init.js"></script>
+
+</body>
+
+</html>

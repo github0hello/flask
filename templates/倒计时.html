@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/static/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+	<title>倒计时</title>
+</head>
+
+<body>
+
+
+
+	<div class="container mt-3">
+		  <div class="list-group">
+    		<a href="/" class="list-group-item list-group-item-action">返回</a>
+		  </div>
+		<hr>
+		<h1>html 倒计时</h1>
+		<h2 id="demo">准备</h2>
+		<div class="progress">
+		  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%" id="progress">100%</div>
+		</div>
+		<br>
+		<input type='number' id='size'>
+		<button type="button" class="btn btn-primary" onclick="start()" id="start_button">开始</button>
+		<button type="button" class="btn btn-primary" onclick="myStopFunction2()" id="stop_button" disabled="ture">停止</button>
+	</div>
+
+
+
+
+	<script>
+		var a
+		var b
+		var myVar
+		function start() {
+			a = document.getElementById("size").value;
+			if (a <= 0){
+				document.getElementById("demo").innerHTML = "erorr";
+				document.getElementById("size").value = 0
+				return
+			}
+			b = document.getElementById("size").value;
+			document.getElementById("start_button").disabled = "ture"
+			document.getElementById("stop_button").disabled = false
+			myVar = setInterval(function () { myTimer() }, 1000);
+		}
+
+		function myTimer() {
+			a--
+			document.getElementById("demo").innerHTML = a + "秒";
+			let number = a/b*100
+			document.getElementById("progress").style.width = number+"%"
+			document.getElementById("progress").innerHTML = number+"%"
+			if (a <= 0) {
+				document.getElementById("demo").innerHTML = "时间到"
+				document.getElementById("progress").style.width = "width:100%"
+				myStopFunction()
+
+			}
+
+		}
+		function myStopFunction() {
+			clearInterval(myVar);
+			document.getElementById("start_button").disabled = false
+			document.getElementById("stop_button").disabled = "true"
+		}
+ function myStopFunction2() {
+ 	document.getElementById("demo").innerHTML = "已停止"
+ 	myStopFunction()
+ 	}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Awesome 图标</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+<style>
+.button {
+    border: none;
+    width: 6em;
+    color: white;
+    /* padding: 16px 32px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 2.8em;
+}
+
+.button1 {
+    background-color: rgb(110, 189, 254);
+
+}
+
+.button1:hover {
+    background-color: rgb(169, 212, 247); 
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* 定位 */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+</style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <span class="fa fa-exclamation-circle" style="font-size:190px;color:rgb(245, 108, 108);"></span>
+    <h1>错误</h1>
+    <p style="color: #8d8888;">{{ error }}</p>
+    <button onclick='location.href=("{{ url }}")' class="tooltip button button1">重试
+        <span class="tooltiptext">来自：{{ url }}</span>
+    </button>
+
+</div>
+
+</body>
+</html>
