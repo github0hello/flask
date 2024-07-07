@@ -1,48 +1,44 @@
-
-import sys
-sys.path.append('/mnt/ext_sdcard/flask')
+import time
+from tools import color
 from flask import *
-from flask import render_template
-
-#exit()
+print(" * ["+time.strftime('%Y-%m-%d %H:%M:%S')+"] Import lib: flask")
 from blueprint.login import login_bp
 from blueprint.upload import upload_bp
 from blueprint.file import my_file_bp
-# from blueprint.root import root_bp
 from blueprint.test import test_bp
-# from tools.path_list import path_list
+print(' * ['+time.strftime('%Y-%m-%d %H:%M:%S')+'] loading : blueprint')
 import os
-import difflib
 from flask_sqlalchemy import SQLAlchemy  
 import bcrypt
 from flask_cors import CORS
 from flask_cors import cross_origin
 from pyzbar.pyzbar import decode
 from PIL import Image
-#import cv2
 from tools.vars import *
 import secrets
+import difflib
 # import glob
 # from gevent import pywsgi
 import subprocess
-# init
+print(" * Import other lib")
 
+# init
 app = Flask(__name__)
+print(" * Flask init")
 app.secret_key = '5s9s.dd9&@8s.da36lm_4qw97n.Éwo3_pq.,is.h'
 app.config['SQLALCHEMY_DATABASE_URI'] =  'mysql+pymysql://root:mysql@localhost:3306/test?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+print(" * Config app")
 app.register_blueprint(login_bp)
 app.register_blueprint(upload_bp)
 app.register_blueprint(my_file_bp)
 app.register_blueprint(test_bp)
+print(" * ["+time.strftime('%Y-%m-%d %H:%M:%S')+"] Register blueprint")
 CORS(app, supports_credentials=True)
 db = SQLAlchemy(app)
+
+
 path_list = []
-
-
-                
-
-
 
 app.app_context().push()
 class User(db.Model):  
@@ -60,11 +56,6 @@ class video_viewer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user = db.Column(db.String(80))
 
-path_list = []
-
-
-
-
 for root,dirs,files in os.walk('static'):
         for file in files:
             if file.split('.')[-1] == 'html':
@@ -73,10 +64,9 @@ for root,dirs,files in os.walk('static'):
 for i in app.url_map.iter_rules():
     path_list.append(str(i))
 
-db.create_all()
+print(" * ["+time.strftime('%Y-%m-%d %H:%M:%S')+"] Databade init")
 @app.route("/exit_video_viewing")
 def exit_video_viewing():
-    # print("======================================================", video_viewer.query.first().user)
     global cap
     # 方式1: 先查后删除
     if video_viewer.query.count() == 0 or session.get("Video viewing key") != video_viewer.query.first().user:
@@ -179,9 +169,9 @@ def favicon():
 @app.route("/login", methods=["GET"])
 def login():
     return render_template("login.html")
+
 @app.route('/login', methods=['POST'])  
-def login_api():  
-    
+def login_api():
     data = request.form
     username = data.get('name')  
     password = data.get('password')
@@ -194,7 +184,6 @@ def login_api():
     if user and bcrypt.checkpw(password.encode('utf-8'), user.password_hash.encode('utf-8')):  
         # 设置用户会话，例如将用户ID存储在session中  
         session['user_info'] = user.username
-
         session['path'] = 'date/' + user.username
         return redirect("/")
     else:  
@@ -298,7 +287,7 @@ def websocket():
         return redirect('/login')
     return render_template("socket.html")  # 调用render_template函数，传入html文件参数
 
-
+# 404
 @app.errorhandler(404)
 def error(e):
     match_url_numbers = {}
@@ -307,14 +296,11 @@ def error(e):
     for i in path_list:
         match_url_numbers[string_similar(i, request.url)] = i
     return render_template("404.html",link=match_url_numbers[max(match_url_numbers.keys())]), 404
-
-
-
+print(" * Set app route")
 
 
 
 if __name__ == '__main__':
     # server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
     # erver.serve_forever()
-
     app.run(debug=True, port=5000, host="0.0.0.0")
